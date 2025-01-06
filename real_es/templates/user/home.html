@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user/home.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Background Image Section -->
+    <div class="background-container">
+        <!-- Navbar -->
+        <nav>
+            <div class="logo-container">
+                <img src="{% static 'img/s/login2.png' %}" alt="Logo" class="logo">
+                <span class="logo-text">HavenSpot</span>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item"><a class="nav-link" href="/buy_page">Buy</a></li>
+                <li class="nav-item"><a class="nav-link" href="/rent_page">Rent</a></li>
+                <li class="nav-item"><a class="nav-link" href="/add_property">Sell</a></li>
+                <li class="nav-item"><a class="nav-link" href="/seller_req">inbox</a></li>
+                <li class="nav-item dropdown">
+                    <i class="fa-solid fa-gear dropdown-icon"></i>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user_property">Your Properties</a></li>
+                        <li><a href="add_amn">Add Amenities</a></li>
+                        <li><a href="logout">Logout</a></li>
+                    </ul>
+                </li>            
+            </ul>
+        </nav>
+
+        <!-- Home Page Content -->
+        <div class="content-container">
+            <h1>Find your ideal home now</h1>
+        </div>
+    </div>
+
+    <!-- Search Bar (Placed below the background image) -->
+    <div class="search-container">
+        <div class="search-bar">
+            <form method="GET" action="/p_search" class="search-form">
+                <div class="search-group">
+                    <select name="availability" required>
+                        <option value="">Select Availability</option>
+                        <option value="For Sale">For Sale</option>
+                        <option value="For Rent">For Rent</option>
+                    </select>
+                </div>
+                
+                <div class="search-group">
+                    <select name="property_type" required>
+                        <option value="">Select Property Type</option>
+                        <option value="House">House</option>
+                        <option value="Apartment">Apartment</option>
+                        <option value="Land">Land</option>
+                    </select>
+                </div>
+                
+                <div class="search-group location-group">
+                    <input type="text" name="location" placeholder="Enter Location" required>
+                </div>
+                
+                <div class="search-group">
+                    <button type="submit">Search Properties</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Fresh Properties Section -->
+    <div class="fresh-properties">
+        <h2>Fresh Properties</h2>
+        <div class="properties-list">
+            {% for property in properties %}
+                <a href="/detailed/{{ property.id }}" class="property-card-link">
+                    <div class="property-card">
+                        <h3>{{ property.title }}</h3>
+                        <p>Price: ${{ property.price }}</p>
+                        <p>Location: {{ property.city }}, {{ property.state }}</p>
+                        <p>Availability: {{ property.availability }}</p>
+                        <img src="{{ property.image1.url }}" alt="Property Image" />
+                    </div>
+                </a>
+            {% empty %}
+                <p>No fresh properties available.</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Real Estate Listing Platform</p>
+        <p>
+            <a href="/about">About</a> |
+            <a href="/contact">Contact</a> |
+            <a href="/privacy">Privacy Policy</a>
+        </p>
+    </footer>
+</body>
+
+</html>

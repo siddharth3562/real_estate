@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    {% load static %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'user/add_amenities.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="user_home" style="text-decoration: none;">
+                <img src="{% static 'img/s/login2.png' %}" alt="Logo" class="logo">
+                <span class="logo-text">HavenSpot</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item"><a class="nav-link" href="../buy_page">Buy</a></li>
+            <li class="nav-item"><a class="nav-link" href="../rent_page">Rent</a></li>
+            <li class="nav-item"><a class="nav-link" href="../add_property">Sell</a></li>
+            <li class="nav-item"><a class="nav-link" href="../user_property">View Property</a></li>
+            <li class="nav-item">
+                <!-- Gear Icon -->
+                <div class="dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i> <!-- Font Awesome Gear Icon -->
+                    </a>
+                    <!-- Dropdown Content -->
+                    <div class="dropdown-content">
+                        <a href="/user_property">Your Properties</a>
+                        <a href="/add_amn">Add Amenities</a>
+                        <a href="logout">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="form-container">
+        <h2>Add Amenity to Your Property</h2>
+    
+        <form method="POST" >
+            {% csrf_token %}
+            
+            <label for="property">Select Your Property:</label>
+            <select name="property" id="property" required>
+                {% for property in properties %}
+                    <option value="{{ property.id }}">{{ property.title }} - {{ property.city }}, {{ property.state }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="amenity_name">Amenity Name:</label>
+            <input type="text" id="amenity_name" name="name" placeholder="Enter Amenity (e.g., Swimming Pool)" required>
+    
+            <button type="submit">Add Amenity</button>
+        </form>
+    
+        <div class="amenities-list">
+            <h3>Your Amenities</h3>
+            <ul>
+                {% for amenity in user_amenities %}
+                    <li>{{ amenity.name }} (Property: {{ amenity.property.title }})</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    </div>
+    
+    
+
+</body>
+</html>

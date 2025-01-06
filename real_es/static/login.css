@@ -1,0 +1,138 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(rgba(150, 237, 247, 0.6), rgba(167, 238, 170, 0.6)), url('./img/view-city-with-buildings-trees.jpg');
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(2px);
+}
+
+/* Login container */
+.login-container {
+    background: #ffffff96;
+    color: #333;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Branding Section */
+.branding {
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    width: auto;
+    height: 100px;
+    margin-bottom: 0.5rem;
+}
+
+.login-container h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Refined Input Fields */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Input fields on focus */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.4);
+    outline: none;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(90deg, #6c63ff, #574ae2);
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(90deg, #574ae2, #6c63ff);
+}
+
+/* Link to sign-up page */
+p {
+    margin-top: 1rem;
+}
+
+a {
+    color: #6c63ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Alert styling */
+.alert {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    text-align: left;
+}
+
+.login-container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        padding: 1rem;
+        max-width: 90%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}

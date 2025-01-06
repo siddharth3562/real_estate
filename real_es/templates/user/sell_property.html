@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Property - HavenSpot</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user/add_property.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+
+</head>
+<body>
+    <!-- Navigation -->
+<!-- Navigation -->
+<!-- Navigation -->
+<nav>
+    <div class="logo-container">
+        <a href="user_home" style="text-decoration: none;">
+            <img src="{% static 'img/s/login2.png' %}" alt="Logo" class="logo">
+            <span class="logo-text">HavenSpot</span>
+        </a>
+    </div>
+    <ul class="nav-links">
+        <li class="nav-item"><a class="nav-link" href="../buy_page">Buy</a></li>
+        <li class="nav-item"><a class="nav-link" href="../rent_page">Rent</a></li>
+        <li class="nav-item"><a class="nav-link" href="../add_property">Sell</a></li>
+        <li class="nav-item">
+            <!-- Gear Icon -->
+            <div class="dropdown">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-cog"></i> <!-- Font Awesome Gear Icon -->
+                </a>
+                <!-- Dropdown Content -->
+                <div class="dropdown-content">
+                    <a href="/user_property">Your Properties</a>
+                    <a href="add_amn">Add Amenities</a>
+                    <a href="logout">Logout</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <h2>Add New Property</h2>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+            </div>
+
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+
+            <div>
+                <label for="property_type">Property Type:</label>
+                <select id="property_type" name="property_type" required>
+                    <option value="">Select Type</option>
+                    <option value="House">House</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Land">Land</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="availability">Availability:</label>
+                <select id="availability" name="availability" required>
+                    <option value="">Select Availability</option>
+                    <option value="For Sale">For Sale</option>
+                    <option value="For Rent">For Rent</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+
+            <div>
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+
+            <div>
+                <label for="state">State:</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+
+            <div>
+                <label for="bedrooms">Bedrooms:</label>
+                <input type="number" id="bedrooms" name="bedrooms" min="0" required>
+            </div>
+
+            <div>
+                <label for="bathrooms">Bathrooms:</label>
+                <input type="number" id="bathrooms" name="bathrooms" min="0" required>
+            </div>
+
+            <div>
+                <label for="area">Area (in sq. ft.):</label>
+                <input type="number" id="area" name="area" step="0.01" required>
+            </div>
+
+            <div>
+                <label for="image1">Image 1:</label>
+                <input type="file" id="image1" name="image1" accept="image/*" required>
+            </div>
+
+            <div>
+                <label for="image2">Image 2:</label>
+                <input type="file" id="image2" name="image2" accept="image/*">
+            </div>
+
+            <div>
+                <label for="image3">Image 3:</label>
+                <input type="file" id="image3" name="image3" accept="image/*">
+            </div>
+
+            <button type="submit">Add Property</button>
+        </form>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <p class="message {{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

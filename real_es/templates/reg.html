@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HavenSpot</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'reg.css' %}">
+</head>
+<body>
+  <div class="form-container">
+    <!-- Logo Section -->
+    <div class="logo-container">
+        <img src="{% static 'img/logo.png' %}" alt="HavenSpot Logo" class="logo">
+    </div>
+    <form class="registration-form" action="" method="POST">
+        {% csrf_token %}
+        <h2>Register</h2>
+  
+        <input type="text" id="username" name="uname" placeholder="Username" required>
+  
+        <input type="email" id="email" name="email" placeholder="Email" required>
+  
+        <input type="password" id="password" name="pswd" placeholder="Password" required>
+  
+        <button type="submit">Register</button>
+  
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </form>
+  </div>
+</body>
+</html>

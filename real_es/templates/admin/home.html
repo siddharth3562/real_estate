@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HavenSpot Admin</title>
+    {% load static %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/home.css' %}">
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-layer-group"></i>
+            <span>HavenSpot</span>
+        </div>
+        <div class="nav-links">
+            <a href="/admin_home" class="nav-link">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a href="/users_details" class="nav-link">
+                <i class="fas fa-users"></i>
+                Users List
+            </a>
+            <a href="/property_list" class="nav-link">
+                <i class="fa-solid fa-building"></i>                
+                View property
+            </a>
+            <a href="/logout" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome to your admin control panel</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-card-content">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-label">Total Users</div>
+                        <div class="stat-value">1,234</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-content">
+                    <div class="stat-icon green">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-label">Active Listings</div>
+                        <div class="stat-value">856</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-card-content">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-label">Total Amenities</div>
+                        <div class="stat-value">42</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

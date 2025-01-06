@@ -1,0 +1,313 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Background and Navbar */
+.background-container {
+    position: relative;
+    height: 100vh; 
+    background-image: url('../img/empty-street-modern-city.jpg'); /* Replace with actual background image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo {
+    width: 60px; /* Adjust logo size */
+    height: 60px;
+    margin-right: 10px;
+}
+
+nav .logo-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: black;
+}
+
+.nav-links {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-item {
+    margin: 0 20px;
+}
+
+.nav-link {
+    color: black;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.nav-item .logout {
+    margin-left: auto;
+}
+/* Dropdown Styles */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.dropdown-icon {
+    font-size: 20px;
+    /* color: #4b5563; */
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    list-style: none;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #1f2937;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f3f4f6;
+}
+
+/* Show Dropdown on Hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+/* Home Page Content */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 50%; /* Half the height of the container */
+    color: black;
+    text-align: center;
+    margin-top: 100px; /* Optional: Add some margin on top */
+}
+
+.content-container h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Optional: Add shadow for better visibility */
+}
+
+/* Search Bar Styling (Below Background Image) */
+.search-container {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.search-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.location-group {
+    flex: 2;
+}
+
+/* Form Elements Styling */
+.search-form select,
+.search-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.search-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 15px;
+    padding-right: 40px;
+}
+
+.search-form input::placeholder {
+    color: #888;
+}
+
+.search-form select:focus,
+.search-form input:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Button Styling */
+.search-form button {
+    width: 100%;
+    padding: 12px 25px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+/* Fresh Properties Section */
+.fresh-properties {
+    padding: 20px;
+}
+
+.fresh-properties h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.properties-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Styling for clickable card */
+.property-card-link {
+    text-decoration: none; /* Remove default underline from the anchor tag */
+    color: inherit; /* Keep text color as the card text color */
+}
+
+/* Property Card Styling */
+.property-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.property-card h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.property-card p {
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.property-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .search-group {
+        width: 100%;
+    }
+    
+    .location-group {
+        width: 100%;
+    }
+}
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+footer a {
+    color: #ff5733;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

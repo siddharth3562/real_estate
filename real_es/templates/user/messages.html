@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Messages</title>
+</head>
+<body>
+    <h1>Your Contact Messages</h1>
+
+    {% if contact_messages %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Contact Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Message Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in contact_messages %}
+                    <tr>
+                        <td>{{ message.property.name }}</td>
+                        <td>{{ message.name }}</td>
+                        <td>{{ message.email }}</td>
+                        <td>{{ message.phone_number }}</td>
+                        <td>{{ message.date_submitted }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No contact messages found.</p>
+    {% endif %}
+
+    <a href="/">Go to Home</a>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List - HavenSpot</title>
+    {% load static %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin/user_list.css' %}">
+
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <i class="fas fa-layer-group"></i>
+            <span>HavenSpot</span>
+        </div>
+        <div class="nav-links">
+            <a href="/admin_home" class="nav-link">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a href="/users_details" class="nav-link" style="background: #374151; margin: 0 10px; border-radius: 6px;">
+                <i class="fas fa-users"></i>
+                Users List
+            </a>
+            <a href="/property_list" class="nav-link">
+                <i class="fas fa-plus"></i>
+                View property
+            </a>
+            <a href="/logout" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>User Management</h1>
+            <p>View and manage system users</p>
+        </div>
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in user %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <a href="/activate_account/{{user.id}}" class="action-btn btn-activate">
+                                <i class="fas fa-check"></i> Activate Account
+                            </a>
+                            <a href="/deactivate_account/{{user.id}}" class="action-btn btn-deactivate">
+                                <i class="fas fa-ban"></i> Deactivate Account
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

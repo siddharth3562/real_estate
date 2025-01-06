@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Properties</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user/view_property.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo-container">
+            <a href="user_home" style="text-decoration: none;">
+                <img src="{% static 'img/s/login2.png' %}" alt="Logo" class="logo">
+                <span class="logo-text">HavenSpot</span>
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item"><a class="nav-link" href="/buy_page">Buy</a></li>
+            <li class="nav-item"><a class="nav-link" href="/rent_page">Rent</a></li>
+            <li class="nav-item"><a class="nav-link" href="/add_property">Sell</a></li>
+            <li class="nav-item">
+                <!-- Gear Icon -->
+                <div class="dropdown">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i> <!-- Font Awesome Gear Icon -->
+                    </a>
+                    <!-- Dropdown Content -->
+                    <div class="dropdown-content">
+                        <a href="/user_property">Your Properties</a>
+                        <a href="add_amn">Add Amenities</a>
+                        <a href="logout">Logout</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h2>Your Listed Properties</h2>
+        {% if properties %}
+            <div class="property-container">
+                {% for property in properties %}
+                    <div class="property-card">
+                        <img src="{{ property.image1.url }}" alt="{{ property.title }}" class="property-image">
+                        <h3>{{ property.title }}</h3>
+                        <p>{{ property.description|truncatewords:20 }}</p>
+                        <p>Price: ${{ property.price }}</p>
+                        <p>Location: {{ property.city }}, {{ property.state }}</p>
+                        <p>Bedrooms: {{ property.bedrooms }} | Bathrooms: {{ property.bathrooms }}</p>
+                        <p>Status: {{ property.availability }}</p>
+                        <div class="property-actions">
+                            <a href="/edit_property/{{ property.id }}" class="btn edit-btn">Edit</a>
+                            <form method="POST" action="/del_property/{{ property.id }}/" style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn delete-btn">Delete</button>
+                            </form>                        
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>You have not listed any properties yet.</p>
+        {% endif %}
+    </div>
